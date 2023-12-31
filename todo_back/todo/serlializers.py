@@ -26,11 +26,38 @@ class TodoSerializer(TaggitSerializer,serializers.ModelSerializer):
 
     def create(self, validated_data):
         uploaded_files=validated_data.pop('uploaded_files',None)
+        todo_tags=validated_data.pop('tags',None)
         todo=Todo.objects.create(**validated_data)
+        if todo_tags:
+            todo_tags=todo_tags[0].split(", ")
+            for i in todo_tags:
+                print(i)
+                todo.tags.add(i)
         if uploaded_files is not None:
             for file in uploaded_files:
                 newtodo_file=TodoFile.objects.create(todo=todo,file=file)
         return todo
+    
+    def update(self, instance, validated_data):
+        uploaded_files=validated_data.pop('uploaded_files',None)
+        todo_tags=validated_data.pop('tags',None)
+        if todo_tags:
+            todo_tags=todo_tags[0].split(", ")
+            instance.tags.clear()
+            for i in todo_tags:
+                print(i)
+                instance.tags.add(i)
+
+        for key, value in validated_data.items():
+            setattr(instance, key, value)
+        
+        if uploaded_files is not None:
+            for file in uploaded_files:
+                newtodo_file=TodoFile.objects.create(todo=instance,file=file)
+
+        instance = super(TodoSerializer, self).update(instance, validated_data)
+        return instance
+        
 
 
    

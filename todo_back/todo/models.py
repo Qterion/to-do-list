@@ -23,3 +23,4 @@ class Todo(TimeStampMixin):
 class TodoFile(models.Model):
     todo=models.ForeignKey(Todo, on_delete=models.CASCADE, related_name='files')
     file=models.FileField(upload_to='files/',blank=True, null=True, default='')
+
