@@ -45,6 +45,7 @@ const DetailsPage = () => {
         }
       } catch (error) {
         setError('An error occurred while fetching data.');
+        navigate('/')
       } finally {
         setLoading(false);
       }
@@ -145,12 +146,13 @@ const DetailsPage = () => {
                 {todoData.files.map((file) => (
                 
                 <li key={file.id} className="list-group-item">
-                    <Stack direction="horizontal" gap={2}>
-                    <a href={file.file} target="_blank" rel="noopener noreferrer">
+                    
+                    <Stack direction="horizontal" gap={2} >
+                    <p target="_blank" rel="noopener noreferrer">
                     {file.file.substring(file.file.lastIndexOf('/') + 1)}
-                    </a>
-                    <Button onClick={() => HandleDownload(file.id, file.file.substring(file.file.lastIndexOf('/') + 1))}>Download</Button>
-                    <Button variant='danger' onClick={() => HandleFileDelete(file.id)}>Delete</Button>
+                    </p>
+                    <Button size="sm" onClick={() => HandleDownload(file.id, file.file.substring(file.file.lastIndexOf('/') + 1))}>Download</Button>
+                    <Button size="sm" variant='danger' onClick={() => HandleFileDelete(file.id)}>Delete</Button>
                     </Stack>
                 </li>
                 

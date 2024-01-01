@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-
+import Stack from 'react-bootstrap/Stack';
 const Register = () => {
 const navigate = useNavigate ();
   // State to store form data
@@ -45,7 +45,10 @@ const navigate = useNavigate ();
     }
   };
 
+  const GoToLogin = () =>{
+    navigate('/login')
 
+  }
 
   return (
     <Container>
@@ -102,9 +105,15 @@ const navigate = useNavigate ();
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-              Register
-            </Button>
+            
+            <Stack direction="horizontal" gap={2} >
+              <Button variant="primary" type="submit">
+                Register
+              </Button>
+              <Button variant="secondary" onClick={GoToLogin}>
+                Go to Login
+              </Button>
+            </Stack>
           </Form>
         </Col>
       </Row>

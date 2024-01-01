@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import { Container, Alert, Form, Button } from 'react-bootstrap';
+import Stack from 'react-bootstrap/Stack';
+import Row from 'react-bootstrap/Row';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -46,15 +48,23 @@ const LoginForm = () => {
       setErrorMessage('An error occurred during login.');
     }
   };
+  const GoToRegister = () =>{
+    navigate('/register')
+
+  }
 
   return (
-    <Container className="mt-5">
+    <Container style={{marginTop:"10px"}}>
+      <Row className="justify-content-md-center"  md={2}>
+
+      
       {errorMessage && (
         <Alert variant="danger">
           {errorMessage}
         </Alert>
       )}
       <Form onSubmit={handleLogin}>
+        <h2>Login Page</h2>
         <Form.Group className="mb-3" controlId="username">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -73,10 +83,16 @@ const LoginForm = () => {
             required
           />
         </Form.Group>
+        <Stack direction="horizontal" gap={2} >
         <Button type="submit" variant="primary">
           Login
         </Button>
+        <Button variant="secondary" onClick={GoToRegister}>
+          Go to Register
+        </Button>
+        </Stack>
       </Form>
+      </Row>
     </Container>
   );
 };

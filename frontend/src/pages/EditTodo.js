@@ -51,7 +51,7 @@ const EditTodo = ({initialData, onClose}) => {
       // Handle success, e.g., redirect to another page
     } catch (error) {
       console.error('Error creating todo:', error);
-      navigate('/login');
+      navigate('/');
       // Handle error, e.g., display an error message
     }
   };
