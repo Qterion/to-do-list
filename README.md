@@ -4,6 +4,7 @@ simple To do list project
 How to start?
 
 Windows instructions:
+
 1: Download a project and go to project directory in terminal
 
 2: Create a virtual environment:
