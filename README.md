@@ -4,7 +4,7 @@ simple To do list project
 How to start?
 
 Windows instructions:
-1: Download a project and go to it direcory in terminal
+1: Download a project and go to зкщоусе directory in terminal
 
 2: Create a virtual environment:
 python -m venv venv
@@ -23,4 +23,4 @@ go to /frontend and install all the modules by typing: npm i
 then start the react project by typing: python manage.py runserver
 
 Note:
-i have hardcoded the backendURL so make sure to run the backend on this url: http://127.0.0.1:8000/
+Ш have hard coded the backend URL so make sure to run the backend on this URL: http://127.0.0.1:8000/
